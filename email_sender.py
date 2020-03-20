@@ -25,8 +25,8 @@ def sklonuj(surname):
     return pro_koho, osloveni
 
 # user varibles
-sender_email = 'daniel.stancl.19@gmail.com'
-password = 'murkyM3mory35@'
+sender_email = '<your-email>'
+password = '<your-password>'
 
 # load excel, words and pdf
 excel = pd.read_excel(f'Bd_Excels/{file_name}.xlsx')
@@ -50,13 +50,15 @@ for i in range(excel.shape[0]):
         info = excel.iloc[i]
         for email, jmeno in zip(info.Email.split(', '), info.Jmeno.split(', ')):
             pro_koho, osloveni = sklonuj(jmeno)
+            # differentiate between male and females based on the very last character
             if jmeno[-1] == 'á':
                 osloveni = "Vazena pani " + osloveni
                 pro_koho = "pro pani " + pro_koho
             else:
                 osloveni = "Vazeny pane " + osloveni
                 pro_koho = "pro pana " + pro_koho
-            print(osloveni, pro_koho)
+            
+            # send e-mail
             yag.send(
                 to = email,
                 subject = f"{subject[info.Mail]} {info.Mesto} / {pro_koho}",
