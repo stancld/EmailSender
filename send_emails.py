@@ -36,4 +36,4 @@ def posli_maily(excel):
             subject = f"{subject[info.mail]} {info.mesto} / {info.pro_koho}",
             contents = [info.osloveni + contents[info.mail], pdf]
         )
-        time.sleep(1)
+        time.sleep(5)
