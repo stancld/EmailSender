@@ -7,10 +7,6 @@ import urllib
 import yagmail
 from bs4 import BeautifulSoup
 
-# user varibles
-sender_email = '<your-emai>'
-password = '<your-pasword>'
-
 # load excel, words and pdf
 bd_mail = docx2txt.process(f'templates/bd_mail.docx')
 second_mail = docx2txt.process(f'templates/2nd_mail.docx')
@@ -22,11 +18,10 @@ contents = {'bd': bd_mail,
             '2nd': second_mail
 }
 
-# login to email
-yag = yagmail.SMTP(sender_email, password)
 
-
-def posli_maily(excel):
+def posli_maily(excel, sender_email, password):
+    # login to email
+    yag = yagmail.SMTP(sender_email, password)            
     # run sending
     for i in range(excel.shape[0]):
         info = excel.iloc[i]
