@@ -32,7 +32,7 @@ def generuj_osloveni(excel):
             info = excel.iloc[i]
             for email, jmeno in zip(info.Email.split(', '), info.Jmeno.split(', ')):
                 # extract just surname
-                jmeno = jmeno.split()[1]
+                jmeno = jmeno.split()[-1]
                 pro_koho, osloveni = sklonuj(jmeno)
                 # differentiate between male and females based on the very last character
                 if jmeno[-1] == 'á':
