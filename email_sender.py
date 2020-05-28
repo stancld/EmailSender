@@ -64,6 +64,6 @@ for i in range(excel.shape[0]):
                 subject = f"{subject[info.Mail]} {info.Mesto} / {pro_koho}",
                 contents = [osloveni + contents[info.Mail], pdf]
             )
-            time.sleep(1)
+            time.sleep(5)
     except Exception as e:
         print(e)
